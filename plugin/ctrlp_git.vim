@@ -14,7 +14,8 @@ set cpo&vim
 " Variables
 
 " Commands
-" command! CtrlPGit call ctrlp#init(ctrlp#git#id())
+command! CtrlPGitBranch call ctrlp#init(ctrlp#git_branch#id())
+command! CtrlPGitLog call ctrlp#init(ctrlp#git_log#id())
 
 " Keymaps
 

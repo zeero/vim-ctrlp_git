@@ -1,13 +1,5 @@
-This is git for CtrlP Extension.
-Filenames and descriptions in git can be replaced with rake.
-```
-rake name=your_extension_name
-```
-Below is README git.
-
----
 # vim-ctrlp_git
-CtrlP Extension for git.
+CtrlP Extension for git branch and log.
 
 ## Install
 Install with package manager.
@@ -22,12 +14,24 @@ on_cmd = ['CtrlPGit']
 ```
 
 ## Usage
+
+### Git Branch
 ```
-:CtrlPGit
+:CtrlPGitBranch
 ```
 
 If may add keymap into your vimrc like below:
 ```
-nnoremap <leader>t :<C-u>CtrlPGit<CR>
+nnoremap <leader>t :<C-u>CtrlPGitBranch<CR>
+```
+
+### Git Log
+```
+:CtrlPGitLog
+```
+
+If may add keymap into your vimrc like below:
+```
+nnoremap <leader>t :<C-u>CtrlPGitLog<CR>
 ```
 

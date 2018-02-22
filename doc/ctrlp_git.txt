@@ -10,16 +10,18 @@ CONTENTS                                               *ctrlp_git-contents*
 ==============================================================================
 INTRODUCTION                                       *ctrlp_git-introduction*
 
-Note: Please write about 'git' and 'ctrlp_git'.
+CtrlP Extension for git branch and log.
 
 ==============================================================================
 USAGE                                                     *ctrlp_git-usage*
 
 You can open CtrlP extension buffer by: >
-    :CtrlPGit
+    :CtrlPGitBranch
+    :CtrlPGitLog
 <
 If may add keymap into your vimrc like below: >
-    nnoremap <leader>t :<C-u>CtrlPGit<CR>
+    nnoremap <leader>t :<C-u>CtrlPGitBranch<CR>
+    nnoremap <leader>t :<C-u>CtrlPGitLog<CR>
 <
 ==============================================================================
 CUSTOMIZE                                             *ctrlp_git-customize*

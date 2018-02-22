@@ -1,13 +1,13 @@
 " =============================================================================
-" File:          autoload/ctrlp/git.vim
-" Description:   CtrlP Extension for git.
+" File:          autoload/ctrlp/git_log.vim
+" Description:   CtrlP Extension for git_log.
 " =============================================================================
 
 " To load this extension into ctrlp, add this to your vimrc:
 "
-"     let g:ctrlp_extensions = ['git']
+"     let g:ctrlp_extensions = ['git_log']
 "
-" Where 'git' is the name of the file 'git.vim'
+" Where 'git_log' is the name of the file 'git_log.vim'
 "
 " For multiple extensions:
 "
@@ -17,11 +17,11 @@
 "         \ ]
 
 " Load guard
-if ( exists('g:loaded_ctrlp_git') && (! exists('g:ctrlp_git#debug') ) )
+if ( exists('g:loaded_ctrlp_git_log') && (! exists('g:ctrlp_git_log#debug') ) )
   \ || v:version < 700 || &cp
   finish
 endif
-let g:loaded_ctrlp_git = 1
+let g:loaded_ctrlp_git_log = 1
 
 
 " Add this extension's settings to g:ctrlp_ext_vars
@@ -54,14 +54,14 @@ let g:loaded_ctrlp_git = 1
 " + specinput: enable special inputs '..' and '@cd' (disabled by default)
 "
 call add(g:ctrlp_ext_vars, {
-\ 'init': 'ctrlp#git#init()',
-\ 'accept': 'ctrlp#git#accept',
-\ 'lname': 'git',
-\ 'sname': 'git',
+\ 'init': 'ctrlp#git_log#init()',
+\ 'accept': 'ctrlp#git_log#accept',
+\ 'lname': 'git_log',
+\ 'sname': 'git_log',
 \ 'type': 'line',
-\ 'enter': 'ctrlp#git#enter()',
-\ 'exit': 'ctrlp#git#exit()',
-\ 'opts': 'ctrlp#git#opts()',
+\ 'enter': 'ctrlp#git_log#enter()',
+\ 'exit': 'ctrlp#git_log#exit()',
+\ 'opts': 'ctrlp#git_log#opts()',
 \ 'sort': 0,
 \ 'specinput': 0,
 \})
@@ -71,7 +71,7 @@ call add(g:ctrlp_ext_vars, {
 "
 " Return: a Vim's List
 "
-function! ctrlp#git#init()
+function! ctrlp#git_log#init()
   let input = [
     \ 'Sed sodales fri magna, non egestas ante consequat nec.',
     \ 'Aenean vel enim mattis ultricies erat.',
@@ -91,7 +91,7 @@ endfunction
 "           the values are 'e', 'v', 't' and 'h', respectively
 "  a:str    the selected string
 "
-function! ctrlp#git#accept(mode, str)
+function! ctrlp#git_log#accept(mode, str)
   " For this example, just exit ctrlp and run help
   call ctrlp#exit()
   help ctrlp-extensions
@@ -99,17 +99,17 @@ endfunction
 
 
 " (optional) Do something before enterting ctrlp
-function! ctrlp#git#enter()
+function! ctrlp#git_log#enter()
 endfunction
 
 
 " (optional) Do something after exiting ctrlp
-function! ctrlp#git#exit()
+function! ctrlp#git_log#exit()
 endfunction
 
 
 " (optional) Set or check for user options specific to this extension
-function! ctrlp#git#opts()
+function! ctrlp#git_log#opts()
 endfunction
 
 
@@ -117,7 +117,7 @@ endfunction
 let s:id = g:ctrlp_builtins + len(g:ctrlp_ext_vars)
 
 " Allow it to be called later
-function! ctrlp#git#id()
+function! ctrlp#git_log#id()
   return s:id
 endfunction
 
