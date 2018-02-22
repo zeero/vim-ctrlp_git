@@ -1,12 +1,12 @@
 " =============================================================================
-" File:          plugin/ctrlp_template.vim
-" Description:   CtrlP Extension for template.
+" File:          plugin/ctrlp_git.vim
+" Description:   CtrlP Extension for git.
 " =============================================================================
 
-if exists('g:loaded_plugin_ctrlp_template') && (! exists('g:ctrlp_template#debug') )
+if exists('g:loaded_plugin_ctrlp_git') && (! exists('g:ctrlp_git#debug') )
   finish
 endif
-let g:loaded_plugin_ctrlp_template = 1
+let g:loaded_plugin_ctrlp_git = 1
 
 let s:save_cpo = &cpo
 set cpo&vim
@@ -14,7 +14,7 @@ set cpo&vim
 " Variables
 
 " Commands
-" command! CtrlPTemplate call ctrlp#init(ctrlp#template#id())
+" command! CtrlPGit call ctrlp#init(ctrlp#git#id())
 
 " Keymaps
 

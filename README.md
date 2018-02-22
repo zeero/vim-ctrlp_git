@@ -1,13 +1,13 @@
-This is template for CtrlP Extension.
-Filenames and descriptions in template can be replaced with rake.
+This is git for CtrlP Extension.
+Filenames and descriptions in git can be replaced with rake.
 ```
 rake name=your_extension_name
 ```
-Below is README template.
+Below is README git.
 
 ---
-# vim-ctrlp_template
-CtrlP Extension for template.
+# vim-ctrlp_git
+CtrlP Extension for git.
 
 ## Install
 Install with package manager.
@@ -15,19 +15,19 @@ Install with package manager.
 [dein.vim](https://github.com/Shougo/dein.vim):
 ```dein.toml
 [[plugin]]
-repo = 'zeero/vim-ctrlp_template'
+repo = 'zeero/vim-ctrlp_git'
 depends = ['ctrlp.vim']
 lazy = 1
-on_cmd = ['CtrlPTemplate']
+on_cmd = ['CtrlPGit']
 ```
 
 ## Usage
 ```
-:CtrlPTemplate
+:CtrlPGit
 ```
 
 If may add keymap into your vimrc like below:
 ```
-nnoremap <leader>t :<C-u>CtrlPTemplate<CR>
+nnoremap <leader>t :<C-u>CtrlPGit<CR>
 ```
 
