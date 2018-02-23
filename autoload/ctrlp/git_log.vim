@@ -17,7 +17,7 @@
 "         \ ]
 
 " Load guard
-if ( exists('g:loaded_ctrlp_git_log') && (! exists('g:ctrlp_git_log#debug') ) )
+if ( exists('g:loaded_ctrlp_git_log') && (! exists('g:ctrlp_git#debug') ) )
   \ || v:version < 700 || &cp
   finish
 endif
@@ -57,7 +57,7 @@ call add(g:ctrlp_ext_vars, {
 \ 'init': 'ctrlp#git_log#init()',
 \ 'accept': 'ctrlp#git_log#accept',
 \ 'lname': 'git_log',
-\ 'sname': 'git_log',
+\ 'sname': 'log',
 \ 'type': 'line',
 \ 'enter': 'ctrlp#git_log#enter()',
 \ 'exit': 'ctrlp#git_log#exit()',

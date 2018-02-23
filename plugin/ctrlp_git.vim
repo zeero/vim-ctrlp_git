@@ -3,10 +3,10 @@
 " Description:   CtrlP Extension for git.
 " =============================================================================
 
-if exists('g:loaded_plugin_ctrlp_git') && (! exists('g:ctrlp_git#debug') )
+if exists('g:loaded_ctrlp_git') && (! exists('g:ctrlp_git#debug') )
   finish
 endif
-let g:loaded_plugin_ctrlp_git = 1
+let g:loaded_ctrlp_git = 1
 
 let s:save_cpo = &cpo
 set cpo&vim

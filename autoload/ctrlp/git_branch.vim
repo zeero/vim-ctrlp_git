@@ -17,7 +17,7 @@
 "         \ ]
 
 " Load guard
-if ( exists('g:loaded_ctrlp_git_branch') && (! exists('g:ctrlp_git_branch#debug') ) )
+if ( exists('g:loaded_ctrlp_git_branch') && (! exists('g:ctrlp_git#debug') ) )
   \ || v:version < 700 || &cp
   finish
 endif
@@ -57,7 +57,7 @@ call add(g:ctrlp_ext_vars, {
 \ 'init': 'ctrlp#git_branch#init()',
 \ 'accept': 'ctrlp#git_branch#accept',
 \ 'lname': 'git_branch',
-\ 'sname': 'git_branch',
+\ 'sname': 'branch',
 \ 'type': 'line',
 \ 'enter': 'ctrlp#git_branch#enter()',
 \ 'exit': 'ctrlp#git_branch#exit()',
@@ -66,21 +66,21 @@ call add(g:ctrlp_ext_vars, {
 \ 'specinput': 0,
 \})
 
+" Vital
+let s:V = vital#ctrlp_git#new()
+let s:Process = s:V.import('System.Process')
+
 
 " Provide a list of strings to search in
 "
 " Return: a Vim's List
 "
 function! ctrlp#git_branch#init()
-  let input = [
-    \ 'Sed sodales fri magna, non egestas ante consequat nec.',
-    \ 'Aenean vel enim mattis ultricies erat.',
-    \ 'Donec vel ipsummauris euismod feugiat in ut augue.',
-    \ 'Aenean porttitous quam, id pellentesque diam adipiscing ut.',
-    \ 'Maecenas luctuss ipsum, vitae accumsan magna adipiscing sit amet.',
-    \ 'Nulla placerat  ante, feugiat egestas ligula fringilla vel.',
-    \ ]
-  return input
+  let result = s:Process.execute([
+  \ 'git', 'branch', '-a',
+  \])
+  let branches = uniq(sort(map(split(substitute(result.output, 'remotes/origin/', '', ''), "\n"), 'strpart(v:val, 2)')))
+  return branches
 endfunction
 
 
@@ -92,9 +92,11 @@ endfunction
 "  a:str    the selected string
 "
 function! ctrlp#git_branch#accept(mode, str)
-  " For this example, just exit ctrlp and run help
   call ctrlp#exit()
-  help ctrlp-extensions
+  let result = s:Process.execute([
+  \ 'git', 'checkout', a:str,
+  \])
+  echo result.output
 endfunction
 
 
