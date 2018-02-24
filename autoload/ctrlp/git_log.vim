@@ -1,6 +1,6 @@
 " =============================================================================
 " File:          autoload/ctrlp/git_log.vim
-" Description:   CtrlP Extension for git_log.
+" Description:   CtrlP Extension for git log.
 " =============================================================================
 
 " To load this extension into ctrlp, add this to your vimrc:
@@ -66,21 +66,27 @@ call add(g:ctrlp_ext_vars, {
 \ 'specinput': 0,
 \})
 
+" Vital
+let s:V = vital#ctrlp_git#new()
+let s:Process = s:V.import('System.Process')
+
 
 " Provide a list of strings to search in
 "
 " Return: a Vim's List
 "
 function! ctrlp#git_log#init()
-  let input = [
-    \ 'Sed sodales fri magna, non egestas ante consequat nec.',
-    \ 'Aenean vel enim mattis ultricies erat.',
-    \ 'Donec vel ipsummauris euismod feugiat in ut augue.',
-    \ 'Aenean porttitous quam, id pellentesque diam adipiscing ut.',
-    \ 'Maecenas luctuss ipsum, vitae accumsan magna adipiscing sit amet.',
-    \ 'Nulla placerat  ante, feugiat egestas ligula fringilla vel.',
-    \ ]
-  return input
+  let padding = &columns - 50
+  let result = s:Process.execute([
+  \ 'git', 'log', '-100', '--date=format:%Y/%m/%d %H:%M:%S', "--pretty=format:%h\t%<(" . padding . ',trunc)%s%<(16,trunc)%an%cd',
+  \])
+  let logs = split(result.output, "\n")
+
+  " highlight
+  call ctrlp#hicheck('CtrlPGitLogHash', 'Identifier')
+  syn match CtrlPGitLogHash / [a-z0-9]\{7}\t/
+
+  return logs
 endfunction
 
 
@@ -92,9 +98,12 @@ endfunction
 "  a:str    the selected string
 "
 function! ctrlp#git_log#accept(mode, str)
-  " For this example, just exit ctrlp and run help
   call ctrlp#exit()
-  help ctrlp-extensions
+  let hash = strpart(a:str, 0, 7)
+  let result = s:Process.execute([
+  \ 'git', 'show', hash,
+  \])
+  echo result.output
 endfunction
 
 

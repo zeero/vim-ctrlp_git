@@ -1,6 +1,6 @@
 " =============================================================================
 " File:          autoload/ctrlp/git_branch.vim
-" Description:   CtrlP Extension for git_branch.
+" Description:   CtrlP Extension for git branch.
 " =============================================================================
 
 " To load this extension into ctrlp, add this to your vimrc:
