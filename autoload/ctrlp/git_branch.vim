@@ -79,7 +79,7 @@ function! ctrlp#git_branch#init()
   let result = s:Process.execute([
   \ 'git', 'branch', '-a',
   \])
-  let branches = uniq(sort(map(split(substitute(result.output, 'remotes/origin/', '', ''), "\n"), 'strpart(v:val, 2)')))
+  let branches = uniq(sort(map(split(substitute(result.output, 'remotes/[^/]\+/\(HEAD -> [^/]\+/\)\?', '', 'g'), "\n"), 'strpart(v:val, 2)')))
   return branches
 endfunction
 
